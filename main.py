@@ -14,6 +14,11 @@ green_letters=[]
 
 a="bumba"
 
+def surface1():
+    for i in range (5):
+        for i1 in range (6):
+            pygame.draw.rect(screen, gray1, (100+i*85, 105+100*i1, 60, 90))
+
 def check_letters():
     a1 = list(a)
     #a1_copy = a1.copy()
@@ -36,8 +41,15 @@ def check_letters():
 
     if correct_letters == 5:
         print("pareizs vards")
-        
 
+
+def letter_colors():
+    for index in green_letters:
+        pygame.draw.rect(screen, green, (100+index*85, 105+100*k, 60, 90))
+
+    for index1 in yellow_letters:
+        pygame.draw.rect(screen, yellow, (100+index1*85, 105+100*k, 60, 90))
+        
 
 pygame.init()
   
@@ -48,22 +60,17 @@ user_text = ''
 w_font=pygame.font.Font("SourceCodePro-ExtraBold.ttf", 28)
 
 screen.fill(gray)
+surface1()
 
 
-
-
-
-
-for i in range(6):
-    input_rect = pygame.Rect(100, 95+i*100, 225, 72)
-    z=0 
+for k in range(6):
+    input_rect = pygame.Rect(100, 95+k*100, 225, 72)
+    #pygame.draw.rect(screen, white, input_rect)
+    z=0
+ 
     while True:
         for event in pygame.event.get():
-            txtsurf = base_font.render(user_text, True, black)
-            screen.blit(txtsurf,(105, 100+100*i))
-            pygame.display.flip()
-            clock.tick(60)
-
+            
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
@@ -76,6 +83,7 @@ for i in range(6):
                         pygame.draw.rect(screen, gray, (0, 0, 600, 100))
                         z=1
                         check_letters()
+                        letter_colors()
                         
                     else: 
                         warning = w_font.render("Nepietiekami daudz burtu", True, black)
@@ -89,8 +97,20 @@ for i in range(6):
                     if len(user_text)<=9:
                         if ord(event.unicode)>65:
                             user_text += event.unicode + " " 
+        
+
+        #screen.fill(gray)
+        txtsurf = base_font.render(user_text, True, black)
+        screen.blit(txtsurf,(105, 100+100*k))
+        pygame.display.flip()
+        
+        clock.tick(60)
+        
         if z==1:
             user_text=""
+            correct_letters=[]
+            yellow_letters=[]
+            green_letters=[]
             break
 
 
