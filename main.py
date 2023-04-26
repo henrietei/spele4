@@ -1,7 +1,7 @@
 import pygame
 import sys
 import random
-import time
+
 
 black = (0,0,0)
 white = (255, 255, 255)
@@ -17,7 +17,7 @@ green_letters=[]
 correct_letters=0
 
 
-
+won=False
 
 
 with open('words.txt', 'r',  encoding="utf-8") as g:
@@ -25,13 +25,19 @@ with open('words.txt', 'r',  encoding="utf-8") as g:
 
 b = random.randint(0, len(lines)-1)
 a = lines[b]
-print(a)
+#print(a)
 
 def win():
-    winner = z_font.render("Jūs vinnējāt!", True, black)
-    screen.blit(winner,(510, 100))
-    #time.sleep(5)
-    #sys.exit()
+    winner = w_font.render("Jūs uzvarējāt!", True, black)
+    screen.blit(winner,(520, 100))
+
+    
+
+def lose():
+    loser = z_font.render("Par daudz", True, black)
+    loser1 = z_font.render("mēģinājumu", True, black)
+    screen.blit(loser,(540, 100))
+    screen.blit(loser1,(530, 150))
 
 
 def surface1():
@@ -47,35 +53,37 @@ def check_letters():
         #if letter in a1_copy:
         if letter in a1:
             if letter == a[i]:
-                print(letter, i)
+                #print(letter, i)
                 correct_letters += 1
                 green_letters.append(i)
             else:
-                print(letter, "/", i)
+                #print(letter, "/", i)
                 yellow_letters.append(i)
                 
             #a1_copy.remove(letter)
             a1.remove(letter)
-        else:
-            print(letter)
-
-    if correct_letters == 5:
-        win()
-
+        #else:
+            #print(letter)
 
 
 def letter_colors():
+
     for index in green_letters:
         pygame.draw.rect(screen, green, (100+index*85, 105+100*k, 60, 90))
 
     for index1 in yellow_letters:
         pygame.draw.rect(screen, yellow, (100+index1*85, 105+100*k, 60, 90))
 
+
+
+
     
         
 
 pygame.init()
   
+
+
 clock = pygame.time.Clock()
 screen = pygame.display.set_mode([800, 800])
 base_font = pygame.font.Font("SourceCodePro-ExtraBold.ttf", 72)
@@ -87,7 +95,7 @@ screen.fill(gray)
 surface1()
 
 won=False
-for k in range(6): 
+for k in range(7): 
     pygame.draw.rect(screen, gray, (540, 300, 200, 50))
     input_rect = pygame.Rect(100, 95+k*100, 225, 72)
     #pygame.draw.rect(screen, white, input_rect)
@@ -109,11 +117,15 @@ for k in range(6):
                 if event.key == pygame.K_RETURN:
                     if len(user_text)==10:
                         minejums=user_text.replace(" ", "")
-                        print(minejums)
+                        #print(minejums)
                         pygame.draw.rect(screen, gray, (0, 0, 600, 100))
                         guess=True
                         check_letters()
                         letter_colors()
+                        if (len(green_letters))==5:
+                            won=True
+                            win()
+
                     
                         
                     else: 
@@ -128,7 +140,8 @@ for k in range(6):
                 else:
                     if len(user_text)<=9:
                         if ord(event.unicode)>65:
-                            user_text += event.unicode + " " 
+                            if won==False:
+                                user_text += event.unicode + " " 
         
 
         #screen.fill(gray)
@@ -140,10 +153,12 @@ for k in range(6):
         
         if guess==True:
             user_text=""
-            correct_letters=[]
+            #correct_letters=0
             yellow_letters=[]
             green_letters=[]
             break
+    if k==5:
+        lose()
 
         
 
