@@ -14,11 +14,11 @@ gulta
 zvans
 starp
 putns
-rūgta
+rūgts
 melns
 dēlis
 laiva
-vārot
+vārīt
 kauls
 kaste
 puika
@@ -26,7 +26,7 @@ maize
 tilts
 gaišs
 brūns
-karti
+karte
 kaķis
 krīts
 siers
@@ -40,7 +40,7 @@ tumšs
 meita
 diena
 dārgs
-dziļi
+dziļš
 grāds
 vēlme
 darīt
@@ -119,14 +119,13 @@ kluss
 likme
 stars
 kvīts
-cieņu
+cieņa
 ritms
 jumts
 telpa
 sakne
 drošs
 skola
-šķiet
 kalps
 kauns
 aitas
@@ -135,7 +134,7 @@ gulēt
 gluda
 čūska
 ciets
-skaņu
+skaņa
 telpa
 īpašs
 posms
@@ -152,8 +151,8 @@ biezs
 tievs
 lieta
 rīkle
-cauri
-cieši
+caurs
+ciešs
 laiks
 triks
 pants
@@ -165,7 +164,7 @@ siena
 silts
 ūdens
 vasks
-veidā
+veids
 svars
 kamēr
 balts
