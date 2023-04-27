@@ -32,7 +32,7 @@ with open('words.txt', 'r',  encoding="utf-8") as g:
 
 b = random.randint(0, len(lines)-1)
 a = lines[b]
-#print(a)
+print(a)
 
 word="vārds:"+" "+(str(a)[:5])
 
@@ -54,7 +54,7 @@ def lose():
     correct_word = w_font.render(word, True, black)
     screen.blit(loser,(540, 100))
     screen.blit(loser1,(530, 150))
-    screen.blit(correct_word,(530, 200))
+    screen.blit(correct_word,(530, 250))
 
 def surface1():
     for i in range (5):
@@ -107,12 +107,12 @@ pygame.draw.rect(screen, green, (100, 105, 60, 90))
 
 won=False
 for k in range(7): 
-    pygame.draw.rect(screen, gray, (540, 300, 200, 50))
+    pygame.draw.rect(screen, gray, (540, 400, 200, 50))
     input_rect = pygame.Rect(100, 95+k*100, 225, 72)
     #pygame.draw.rect(screen, white, input_rect)
-    attempts="minējumi:"+/n+str(k)
+    attempts="minējumi:"+" "+str(k)
     attempt = w_font.render(attempts, True, black)
-    screen.blit(attempt,(550, 300))
+    screen.blit(attempt,(550, 400))
 
     guess=False
 
@@ -164,7 +164,7 @@ for k in range(7):
             yellow_letters=[]
             green_letters=[]
             break
-    if k==5:
+    if k==5 and won==False:
         won=True
         lose()
 
