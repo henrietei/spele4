@@ -178,3 +178,5 @@ tārps
 brūce
 vakar
 jauns
+
+
