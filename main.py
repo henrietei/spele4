@@ -36,13 +36,23 @@ print(a)
 
 word="vārds:"+" "+(str(a)[:5])
 
+
 def tutorial():
-    screen.fill(gray)
+    start=False
+    #screen.fill(gray)
     tutorial_text= "ashfskf"
+    tut = w_font.render(tutorial_text, True, black)
+    screen.blit(tut,(520, 100))
+    pygame.draw.rect(screen, green, [700, 605, 40, 40])
 
-    screen.blit(tutorial_text,(520, 100))
-
-
+    while start==False:
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if 700 <= mouse[0] <= 740 and 605 <= mouse[1] <= 645:
+                    #print(user_text)
+                    print("skafhkfsahfkaslf")
+                    start=True
+            
 def win():
     winner = w_font.render("Jūs uzvarējāt!", True, black)
     screen.blit(winner,(520, 100))
@@ -95,17 +105,22 @@ pygame.init()
 clock = pygame.time.Clock()
 screen = pygame.display.set_mode([800, 800])
 base_font = pygame.font.Font("SourceCodePro-ExtraBold.ttf", 72)
+
 user_text = ''
+
 w_font=pygame.font.Font("SourceCodePro-ExtraBold.ttf", 28)
 z_font=pygame.font.Font("SourceCodePro-ExtraBold.ttf", 36)
 
 
+
 screen.fill(gray)
+tutorial()
 surface1()
-user_text=(a[:1])+" "
-pygame.draw.rect(screen, green, (100, 105, 60, 90))
+
+pygame.draw.rect(screen, green, [700, 605, 40, 40])
 
 won=False
+
 for k in range(7): 
     pygame.draw.rect(screen, gray, (540, 400, 200, 50))
     input_rect = pygame.Rect(100, 95+k*100, 225, 72)
@@ -114,6 +129,8 @@ for k in range(7):
     attempt = w_font.render(attempts, True, black)
     screen.blit(attempt,(550, 400))
 
+    palidziba=w_font.render("Palīdzēt ?", True, black)
+    screen.blit(palidziba,(558, 605))
     guess=False
 
     while True:
@@ -151,7 +168,20 @@ for k in range(7):
                             if won==False:
                                 user_text += event.unicode + " " 
 
-        #screen.fill(gray)
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if 700 <= mouse[0] <= 740 and 605 <= mouse[1] <= 645:
+                    if len(user_text)<=9:
+
+                        s=(int(len(user_text)/2))
+                        letter=a[s]
+                        pygame.draw.rect(screen, green, (100+s*85, 105+100*k, 60, 90))
+                        #print(letter)
+                        #print("skafhkfsahfkaslf")
+                        user_text+=letter+" "
+
+                  
+
+        mouse = pygame.mouse.get_pos()
         txtsurf = base_font.render(user_text, True, black)
         screen.blit(txtsurf,(105, 100+100*k))
         pygame.display.flip()
