@@ -16,12 +16,8 @@ blue = (173, 216, 230)
 yellow_letters=[]
 green_letters=[]
 correct_letters=0
-"""
-tutorial_text1=[("Vārdu minēšanas spēle
-Jūsu uzdevums ir atminēt piecu burtu vārdu.
-Ja burta lauciņš iekrāsojas dzeltenā krāsā, tas nozīmē, ka burts ir vārdā, bet neīstajā vietā. 
-Ja burta lauciņš iekrāsojas zaļā krāsā, tas nozīmē, ka burts atrodas īstajā vietā. 
-Jūsu rīcībā ir 6 mēģinājumi atminēt vārdu.")]"""
+
+tutorial_text1="Vārdu minēšanas spēleJūsu uzdevums ir atminēt piecu burtu vārdu. Ja burta lauciņš iekrāsojas dzeltenā krāsā, tas nozīmē, ka burts ir vārdā, bet neīstajā vietā.Ja burta lauciņš iekrāsojas zaļā krāsā, tas nozīmē, ka burts atrodas īstajā vietā. Jūsu rīcībā ir 6 mēģinājumi atminēt vārdu."
 
 won=False
 
@@ -32,26 +28,11 @@ with open('words.txt', 'r',  encoding="utf-8") as g:
 
 b = random.randint(0, len(lines)-1)
 a = lines[b]
-print(a)
+#print(a)
 
 word="vārds:"+" "+(str(a)[:5])
 
 
-def tutorial():
-    start=False
-    #screen.fill(gray)
-    tutorial_text= "ashfskf"
-    tut = w_font.render(tutorial_text, True, black)
-    screen.blit(tut,(520, 100))
-    pygame.draw.rect(screen, green, [700, 605, 40, 40])
-
-    while start==False:
-        for event in pygame.event.get():
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if 700 <= mouse[0] <= 740 and 605 <= mouse[1] <= 645:
-                    #print(user_text)
-                    print("skafhkfsahfkaslf")
-                    start=True
             
 def win():
     winner = w_font.render("Jūs uzvarējāt!", True, black)
@@ -114,14 +95,14 @@ z_font=pygame.font.Font("SourceCodePro-ExtraBold.ttf", 36)
 
 
 screen.fill(gray)
-tutorial()
-surface1()
+
 
 pygame.draw.rect(screen, green, [700, 605, 40, 40])
-
+surface1()
 won=False
 
 for k in range(7): 
+
     pygame.draw.rect(screen, gray, (540, 400, 200, 50))
     input_rect = pygame.Rect(100, 95+k*100, 225, 72)
     #pygame.draw.rect(screen, white, input_rect)
@@ -154,9 +135,10 @@ for k in range(7):
                             win()
 
                     else: 
-                        warning = w_font.render("Nepietiekami daudz burtu", True, black)
-                        screen.blit(warning,(100, 60))
-                        #time.sleep(2)
+                        if won==False:
+                            warning = w_font.render("Nepietiekami daudz burtu", True, black)
+                            screen.blit(warning,(100, 60))
+
                         
                 if event.key == pygame.K_BACKSPACE:
                     user_text = user_text[:-2]
@@ -170,8 +152,7 @@ for k in range(7):
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if 700 <= mouse[0] <= 740 and 605 <= mouse[1] <= 645:
-                    if len(user_text)<=9:
-
+                    if len(user_text)<=9 and won==False:
                         s=(int(len(user_text)/2))
                         letter=a[s]
                         pygame.draw.rect(screen, green, (100+s*85, 105+100*k, 60, 90))
