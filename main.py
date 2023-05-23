@@ -2,6 +2,7 @@ import pygame
 import sys
 import random
 #import ptext
+import time
 
 
 black = (0,0,0)
@@ -32,7 +33,12 @@ a = lines[b]
 
 word="vārds:"+" "+(str(a)[:5])
 
-
+def tutorial():
+    winner1 = w_font.render("palidziba", True, black)
+    screen.blit(winner1,(520, 100))
+    vards=input("ashs")
+    if vards=="a":
+        return
             
 def win():
     winner = w_font.render("Jūs uzvarējāt!", True, black)
@@ -94,8 +100,9 @@ z_font=pygame.font.Font("SourceCodePro-ExtraBold.ttf", 36)
 
 
 
-screen.fill(gray)
-
+screen.fill(red)
+time.sleep(10)
+#tutorial()
 
 pygame.draw.rect(screen, green, [700, 605, 40, 40])
 surface1()
