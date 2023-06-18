@@ -100,8 +100,8 @@ z_font=pygame.font.Font("SourceCodePro-ExtraBold.ttf", 36)
 
 
 
-screen.fill(red)
-time.sleep(10)
+screen.fill(gray)
+#time.sleep(10)
 #tutorial()
 
 pygame.draw.rect(screen, green, [700, 605, 40, 40])
