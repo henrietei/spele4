@@ -18,8 +18,6 @@ yellow_letters=[]
 green_letters=[]
 correct_letters=0
 
-tutorial_text1="Vārdu minēšanas spēleJūsu uzdevums ir atminēt piecu burtu vārdu. Ja burta lauciņš iekrāsojas dzeltenā krāsā, tas nozīmē, ka burts ir vārdā, bet neīstajā vietā.Ja burta lauciņš iekrāsojas zaļā krāsā, tas nozīmē, ka burts atrodas īstajā vietā. Jūsu rīcībā ir 6 mēģinājumi atminēt vārdu."
-
 won=False
 
 
@@ -33,13 +31,7 @@ a = lines[b]
 
 word="vārds:"+" "+(str(a)[:5])
 
-def tutorial():
-    winner1 = w_font.render("palidziba", True, black)
-    screen.blit(winner1,(520, 100))
-    vards=input("ashs")
-    if vards=="a":
-        return
-            
+
 def win():
     winner = w_font.render("Jūs uzvarējāt!", True, black)
     screen.blit(winner,(520, 100))
@@ -101,8 +93,7 @@ z_font=pygame.font.Font("SourceCodePro-ExtraBold.ttf", 36)
 
 
 screen.fill(gray)
-#time.sleep(10)
-#tutorial()
+
 
 pygame.draw.rect(screen, green, [700, 605, 40, 40])
 surface1()
@@ -117,8 +108,8 @@ for k in range(7):
     attempt = w_font.render(attempts, True, black)
     screen.blit(attempt,(550, 400))
 
-    palidziba=w_font.render("Palīdzēt ?", True, black)
-    screen.blit(palidziba,(558, 605))
+    palidziba=w_font.render("Palīdzība O", True, black)
+    screen.blit(palidziba,(540, 605))
     guess=False
 
     while True:
