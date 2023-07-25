@@ -1,8 +1,6 @@
 import pygame
 import sys
 import random
-#import ptext
-import time
 
 
 black = (0,0,0)
@@ -52,23 +50,16 @@ def surface1():
 
 def check_letters():
     a1 = list(a)
-    #a1_copy = a1.copy()
     correct_letters = 0
     for i, letter in enumerate(minejums):
-        #if letter in a1_copy:
         if letter in a1:
             if letter == a[i]:
                 #print(letter, i)
                 correct_letters += 1
                 green_letters.append(i)
             else:
-                #print(letter, "/", i)
                 yellow_letters.append(i)
-                
-            #a1_copy.remove(letter)
             a1.remove(letter)
-        #else:
-            #print(letter)
 
 def letter_colors():
     for index in green_letters:
