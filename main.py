@@ -30,9 +30,14 @@ a = lines[b]
 word="vārds:"+" "+(str(a)[:5])
 
 
+def tests():
+    print ("ksmdkmcvds")
+    return
+
 def win():
     winner = w_font.render("Jūs uzvarējāt!", True, black)
     screen.blit(winner,(520, 100))
+    tests()
 
 
 def lose():
@@ -99,7 +104,7 @@ for k in range(7):
     attempt = w_font.render(attempts, True, black)
     screen.blit(attempt,(550, 400))
 
-    palidziba=w_font.render("Palīdzība O", True, black)
+    palidziba=w_font.render("Palīdzība ", True, black)
     screen.blit(palidziba,(540, 605))
     guess=False
 
